@@ -1,5 +1,6 @@
-package com.example.citate_of_day.viewmodel
+package com.example.citate_of_day
 
+import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.citate_of_day.data.Quote
 import com.example.citate_of_day.repository.QuoteRepository
@@ -18,6 +19,7 @@ import org.junit.Rule
 import org.junit.Test
 import retrofit2.HttpException
 import app.cash.turbine.test
+import com.example.citate_of_day.viewmodel.QuoteViewModel
 
 @ExperimentalCoroutinesApi
 class QuoteViewModelTest {
@@ -34,8 +36,8 @@ class QuoteViewModelTest {
         mockRepository = mockk()
         Dispatchers.setMain(testDispatcher)
         mockkStatic("android.util.Log")
-        every { android.util.Log.d(any(), any()) } returns 0
-        every { android.util.Log.e(any(), any()) } returns 0
+        every { Log.d(any(), any()) } returns 0
+        every { Log.e(any(), any()) } returns 0
     }
 
     @After

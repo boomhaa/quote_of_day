@@ -1,7 +1,6 @@
 package com.example.citate_of_day.viewmodel
 
 import android.util.Log
-import androidx.compose.ui.graphics.Interval
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.citate_of_day.data.Quote
@@ -10,11 +9,12 @@ import com.example.citate_of_day.repository.QuoteRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import okhttp3.Request
 
-class QuoteViewModel(private val repository: QuoteRepository = QuoteRepository(RetrofitInstance.api),
-    private var requestInterval: Long = 1000L,
-    private val autoLoadInit: Boolean = true) :
+class QuoteViewModel(
+    private val repository: QuoteRepository = QuoteRepository(RetrofitInstance.api),
+    requestInterval: Long = 1000L,
+    autoLoadInit: Boolean = true
+) :
     ViewModel() {
 
     private val _quote = MutableStateFlow<Quote?>(null)
@@ -37,8 +37,7 @@ class QuoteViewModel(private val repository: QuoteRepository = QuoteRepository(R
             _quote.value = Quote(
                 q = "Please, wait a few time before a new quote",
                 a = "System",
-
-                )
+            )
             return
         }
         viewModelScope.launch {

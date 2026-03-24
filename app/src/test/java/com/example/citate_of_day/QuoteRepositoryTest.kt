@@ -1,7 +1,8 @@
-package com.example.citate_of_day.repository
+package com.example.citate_of_day
 
 import com.example.citate_of_day.data.Quote
 import com.example.citate_of_day.data.QuoteApi
+import com.example.citate_of_day.repository.QuoteRepository
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Before
